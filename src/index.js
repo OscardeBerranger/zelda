@@ -18,26 +18,28 @@ loadSprite('chest', 'I7xSp7w.png')
 loadSprite('enemy', 'Ei1VnX8.png.png')
 loadSprite('link', 'yZIb8O2.png.png')
 
-const SPEED = 200
+const SPEED = 450
+const ENEMY_SPEED = 160
+const BULLET_SPEED = 800
 
 export const level = addLevel([
-    "<____________________________>",
-    "]                            [",
-    "]                            [",
-    "]                            [",
-    "]                        s   [",
-    "]                            [",
-    "]      s                     [",
-    "]                            [",
-    "]               c            [",
-    "]                            [",
-    "]                            [",
-    "]                            [",
-    "]            s               [",
-    "]                            [",
-    "]                            [",
-    "] @                          [",
-    "l============================r",
+    "<________________________>",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]               c        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "]                        [",
+    "l========================r",
 ], {
     tileWidth: 48,
     tileHeight: 48,
@@ -121,19 +123,27 @@ const player = add([
     sprite("link"),
     pos(120, 120),
     area(),
+    body(),
     anchor("center"),
 ])
+const slicer = add([
+    sprite("slicer"),
+    pos(400, 400),
+    area(),
+    body(),
+    anchor("center"),
+    state("idle", [ "idle", "attack", "move" ]),
+])
 
-let enemies = {}
 
-
-
+//ia
+//interval = call function move toutes le x secondes
+setInterval(slicerMove, 0.1)
+function slicerMove(){
+    slicer.move(-50, 0)
+}
 // Movements
-onKeyPress("space", () => {
-    if (player.isGrounded()) {
-        player.jump()
-    }
-})
+
 
 onKeyDown("left", () => {
     player.move(-SPEED, 0)
@@ -148,15 +158,4 @@ onKeyDown("up", () => {
 
 onKeyDown("down", () => {
     player.move(0, SPEED)
-})
-
-// Back to the original position if hit a "danger" item
-player.onCollide("danger", () => {
-    player.pos = level.tile2Pos(0, 0)
-})
-
-// Eat the coin!
-player.onCollide("coin", (coin) => {
-    destroy(coin)
-    play("score")
 })
