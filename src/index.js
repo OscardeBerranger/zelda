@@ -40,59 +40,201 @@ loadSpriteAtlas("https://i.imgur.com/Em1jqfW.png", {
         width: 24,
         height: 24,
     },
-    'left-wall': {
-        x:798,
-        y:444,
-        width: 24,
-        height: 24,
-    },
-    'right-wall': {
-        x:1332,
-        y:477,
-        width: 24,
-        height: 24,
-    },
-    'top-wall': {
-        x:1391,
-        y:109,
-        width: 24,
-        height: 24,
-    },
-    'bottom-wall': {
-        x:693,
-        y:887,
-        width: 24,
-        height: 24,
-    },
     'door': {
         x:1320,
         y:109,
         width: 24,
         height: 24,
     },
-    'path': {
-        x:801,
-        y:147,
-        width: 24,
-        height: 24,
-    },
-    'top-left-path': {
-        x:785,
-        y:135,
-        width: 24,
-        height: 24,
-    },
-    'bottom-left-path': {
-        x:785,
-        y:158,
-        width: 24,
-        height: 24,
-    },
 
 })
-//Kakariko
-loadSpriteAtlas("https://i.imgur.com/2Yh36In.png", {
-
+//overworld
+loadSpriteAtlas("https://i.imgur.com/E2hYydK.png", {
+    'path-1': {
+        x:687,
+        y:833,
+        width: 24,
+        height: 24,
+    },
+    'path-2': {
+        x:697,
+        y:777,
+        width: 24,
+        height: 24,
+    },
+    'path-3': {
+        x:712,
+        y:813,
+        width: 24,
+        height: 24,
+    },
+    'path-left': {
+        x:1000,
+        y:441,
+        width: 24,
+        height: 24,
+    },
+    'path-right': {
+        x:1148,
+        y:530,
+        width: 24,
+        height: 24,
+    },
+    'path-bottom': {
+        x:1173,
+        y:505,
+        width: 24,
+        height: 24,
+    },
+    'path-top': {
+        x:1094,
+        y:1015,
+        width: 24,
+        height: 24,
+    },
+    //walls
+    'left-wall': {
+        x:540,
+        y:948,
+        width: 24,
+        height: 24,
+    },
+    'right-wall': {
+        x:33,
+        y:983,
+        width: 24,
+        height: 24,
+    },
+    'top-wall': {
+        x:676,
+        y:1103,
+        width: 24,
+        height: 24,
+    },
+    'bottom-wall': {
+        x:401,
+        y:907,
+        width: 24,
+        height: 24,
+    },
+    'bottom-right-wall': {
+        x:427,
+        y:891,
+        width: 24,
+        height: 24,
+    },
+    'bottom-left-wall': {
+        x:468,
+        y:891,
+        width: 24,
+        height: 24,
+    },
+    'top-left-wall': {
+        x:498,
+        y:1085,
+        width: 24,
+        height: 24,
+    },
+    'top-right-wall': {
+        x:652,
+        y:1100,
+        width: 24,
+        height: 24,
+    },
+    'roof-wall': {
+        x:471,
+        y:935,
+        width: 24,
+        height: 24,
+    },
+    //tree
+    'top-left-tree': {
+        x:178,
+        y:644,
+        width: 24,
+        height: 24,
+    },
+    'top-center-tree': {
+        x:202,
+        y:644,
+        width: 24,
+        height: 24,
+    },
+    'top-right-tree': {
+        x:225,
+        y:644,
+        width: 24,
+        height: 24,
+    },
+    'middle-left-tree': {
+        x:178,
+        y:664,
+        width: 24,
+        height: 24,
+    },
+    'middle-center-tree': {
+        x:202,
+        y:664,
+        width: 24,
+        height: 24,
+    },
+    'middle-right-tree': {
+        x:225,
+        y:664,
+        width: 24,
+        height: 24,
+    },
+    'bottom-middle-left-tree': {
+        x:178,
+        y:688,
+        width: 24,
+        height: 24,
+    },
+    'bottom-middle-center-tree': {
+        x:202,
+        y:688,
+        width: 24,
+        height: 24,
+    },
+    'bottom-middle-right-tree': {
+        x:225,
+        y:688,
+        width: 24,
+        height: 24,
+    },
+    'bottom-left-tree': {
+        x:178,
+        y:712,
+        width: 24,
+        height: 24,
+    },
+    'bottom-center-tree': {
+        x:202,
+        y:712,
+        width: 24,
+        height: 24,
+    },
+    'bottom-right-tree': {
+        x:225,
+        y:712,
+        width: 24,
+        height: 24,
+    },
+})
+//House interior + stuff
+loadSpriteAtlas("https://i.imgur.com/6nzxc0r.png", {
+    "closed-chest": {
+        x:153,
+        y:53,
+        width: 16,
+        height: 16,
+    },
+    "opened-chest": {
+        x:136,
+        y:53,
+        width: 16,
+        height: 16,
+    },
 })
 //enemies
 loadSpriteAtlas("https://i.imgur.com/xbiVp0h.png", {
@@ -174,7 +316,7 @@ loadSpriteAtlas("https://i.imgur.com/74zPnnl.png", {
 })
 
 
-const SPEED = 450
+const SPEED = 200
 const ENEMY_SPEED = 160
 const BULLET_SPEED = 800
 
@@ -256,42 +398,45 @@ scene("temp", ()=>{
 scene("spawn", ()=>{
     const map = [
         addLevel([
-            "]______________________________d_____________________________[",
-            "]                                                            [",
-            "]          t                                                 [",
-            "]                                              t             [",
-            "]                        t                                   [",
-            "]                    t                                       [",
-            "]                                                            [",
-            "]                        t                                   [",
-            "]                                                            [",
-            "]                                          t                 [",
-            "]                                                            [",
-            "]      tt             t                               t      [",
-            "]       tt                          t                        [",
-            "]                                                            [",
-            "]                                                            [",
-            "]                       t           t                        [",
-            "]                                                   t        [",
-            "]     t                                                      [",
-            "]                                                            [",
-            "]                                                            [",
-            "]                               t                            [",
-            "]               t                                            [",
-            "]                                             t  t           [",
-            "]                                                            [",
-            "]              t                    t                        [",
-            "]                                                            [",
-            "]                                                            [",
-            "]                      t                  t                  [",
-            "]                                                            [",
-            "]         t                                                  [",
-            "]                                                            [",
-            "]                                                            [",
-            "]                  t                                         [",
-            "]                                                            [",
-            "]                                                            [",
-            "]============================================================[",
+            "_______________________________d_____________________________________________",
+            "]                                                                           [",
+            "]          t                                                                [",
+            "]                                                            t              [",
+            "]                                      t                                    [",
+            "]                    t                                                      [",
+            "]                                                                           [",
+            "]                        t                                                  [",
+            "]                                                                           [",
+            "]                                                        t                  [",
+            "]                                                                           [",
+            "]      tt             t                                                  t  [",
+            "]       tt                                        t                         [",
+            "]                                                                           [",
+            "]                                                                           [",
+            "]                       t                         t                         [",
+            "]                                                                 t         [",
+            "]     t                   kkkkkkkkkkkkkkkk                                  [",
+            "]                         jjjjjjjjjjjjjjjj                                  [",
+            "]                                         hg                                [",
+            "]                                         hg  t                             [",
+            "]               t                         hg                                [",
+            "]                                         hg                t  t            [",
+            "]                                         hg                                [",
+            "]              t                          hg      t                         [",
+            "]                                         hg                                [",
+            "]                                         hg                                [",
+            "]                                    t    hg             t                  [",
+            "]                                         hg                                [",
+            "]         t                               hg                                [",
+            "]                                         hg                                [",
+            "]                                                                           [",
+            "]                  t                                                        [",
+            "]                                                                           [",
+            "]                                                                           [",
+            "]                                                                           [",
+            "]                                                                           [",
+            "]                                                                           [",
+            "]===========================================================================[",
         ], {
             tileWidth: 24,
             tileHeight: 24,
@@ -339,22 +484,254 @@ scene("spawn", ()=>{
                     anchor("bot"),
                     'door',
                 ],
+                "<": ()=>[
+                    sprite("top-left-wall"),
+                    area(),
+                    body({ isStatic: true }),
+                    anchor("bot"),
+                    'top-left-wall',
+                ],
+                ">": ()=>[
+                    sprite("top-right-wall"),
+                    area(),
+                    body({ isStatic: true }),
+                    anchor("bot"),
+                    'top-left-wall',
+                ],
+                "r": ()=>[
+                    sprite("roof-wall"),
+                ],
+                "p": ()=>[
+                    sprite("path-1"),
+                ],
+                "q": ()=>[
+                    sprite("path-2"),
+                ],
+                "f": ()=>[
+                    sprite("path-3"),
+                ],
+                "g": ()=>[
+                    sprite("path-right"),
+                ],
+                "h": ()=>[
+                    sprite("path-left"),
+                ],
+                "j": ()=>[
+                    sprite("path-bottom"),
+                ],
+                "k": ()=>[
+                    sprite("path-top"),
+                ],
+                "c": ()=>[
+                    sprite("closed-chest"),
+                    area(),
+                    body({ isStatic: true }),
+                    anchor("bot"),
+                    'chest-with-key',
+                    scale(3),
+                ],
+            }
+        }),
+        addLevel([
+                "azeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeaze",
+                "qsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsd",
+                "wxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxc",
+                "rtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "aze                                                                        aze",
+                "qsd                                                                        qsd",
+                "wxc                                                                        wxc",
+                "rty                                                                        rty",
+                "azeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeazeaze",
+                "qsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsdqsd",
+                "wxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxcwxc",
+                "rtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrtyrty",
+            ], {
+            tileWidth: 24,
+            tileHeight: 24,
+            pos: vec2(50, 50),
+
+            tiles: {
+                "a": () => [
+                    sprite("top-left-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "z": () => [
+                    sprite("top-center-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "e": () => [
+                    sprite("top-right-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "q": () => [
+                    sprite("middle-left-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "s": () => [
+                    sprite("middle-center-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "d": () => [
+                    sprite("middle-right-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "w": () => [
+                    sprite("bottom-middle-left-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "x": () => [
+                    sprite("bottom-middle-center-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "c": () => [
+                    sprite("bottom-middle-right-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "r": () => [
+                    sprite("bottom-left-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "t": () => [
+                    sprite("bottom-center-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
+                "y": () => [
+                    sprite("bottom-right-tree"),
+                    area(),
+                    body({isStatic: true}),
+                    anchor("bot"),
+                    'left-wall',
+                ],
             }
         })
     ]
+    let curFont = 0
+    let curSize = 48
+    const pad = 24
 
 
-// Get the player object from tag
-//     const player = level.get("player")[0]
+    //variables utiles plus tard
+    let hasKey = false
+    let curDialog = 0
+    let dialogs = [
+        [ "player", "You need a key" ],
+        [ "player", "You found a key" ],
+    ]
+    const textbox = add([
+        rect( 700, 120, { radius: 12 }),
+        anchor("center"),
+        pos(center().x, height() - 100),
+        outline(2),
+    ])
+    textbox.hidden = true
+// Text
+    const txt = add([
+        text("", { size: 32, width: width() - 230, align: "center" }),
+        pos(textbox.pos),
+        anchor("center"),
+        color(0, 0, 0),
+    ])
+    txt.hidden = true
+
+// Get the object on map
     const player = add([
         sprite('link'),
         pos(400, 500),
         area(),
         body(),
-        anchor("center"),
         health(3),
+        anchor("center"),
         scale(0.5),
         'player'
+    ])
+    let hpInf = add([
+        text(player.hp(), {}),
+        pos(100, 100),
+        // scale(0.5),
+    ])
+    player.on("hurt", ()=>{
+        hpInf.text = player.hp()
+    })
+
+    const enemy = add([
+        sprite('orc-enemy'),
+        pos(300, 300),
+        area(),
+        body(),
+        anchor("center"),
+        health(5),
+        scale(3),
+        'enemy'
+    ])
+    const chest = add([
+        sprite("closed-chest"),
+        area(),
+        pos(1000, 400),
+        body({ isStatic: true }),
+        anchor("bot"),
+        'chest-with-key',
+        scale(3),
     ])
 
 // Movements
@@ -412,10 +789,53 @@ scene("spawn", ()=>{
         })
     })
 
-    onCollide('player', 'door', ()=>{
-        go("secondZone", {})
+    //action
+    onCollide('player', 'chest-with-key', ()=>{
+        onKeyDown("e", ()=>{
+            setSprite(chest, 'opened-chest')
+            curDialog = 1
+            hasKey = true
+            updateDialog()
+        })
     })
+    onKeyDown("space", ()=>{
+        if (textbox.hidden === false){
+            textbox.hidden = true
+            txt.hidden = true
+        }
+    })
+    onCollide('player', 'door', ()=>{
+        if (hasKey === true) {
+            go("secondZone", {})
+        }else {
+            curDialog = 0
+            updateDialog()
+        }
+    })
+    function updateDialog() {
+        textbox.hidden = false
+        txt.hidden = false
+        const [ char, dialog ] = dialogs[curDialog]
+        // Update the dialog text
+        txt.text = dialog
+        wait(3, ()=>{
+            textbox.hidden = true
+            txt.hidden = true
+        })
+    }
+    player.on("death", ()=>{
+        destroy(player)
+        go("lose")
+    })
+
+//attack
+
 })
+
+
+
+
+
 scene("secondZone", ()=>{
     const level = addLevel([
         "]____________________________________________________________[",
@@ -473,6 +893,9 @@ scene("secondZone", ()=>{
                 body({ isStatic: true }),
                 anchor("bot"),
                 'right-wall',
+            ],
+            "t": ()=>[
+                sprite("grass-with-twig"),
             ],
             "=": ()=>[
                 sprite("bottom-wall"),
